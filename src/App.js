@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import { PostProvider, usePosts } from "./PostContext";
+// import Test from "./Test";
 
 function createRandomPost() {
   return {
@@ -118,14 +119,18 @@ function List() {
   const { posts } = usePosts();
 
   return (
-    <ul>
-      {posts.map((post, i) => (
-        <li key={i}>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul>
+        {posts.map((post, i) => (
+          <li key={i}>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </li>
+        ))}
+      </ul>
+
+      {/* <Test /> */}
+    </>
   );
 }
 
@@ -137,7 +142,7 @@ function Archive() {
   //on the initial render. So we use this trick as an optimization
   //technique, because if we just used a regular variable, these
   //posts would be re-created on every render. We could also move
-  //the posts outside the components, but I wanted to show you this trick 😉
+  //the posts outside the components, but I wanted to show you this trick 😉'
   const [posts] = useState(() =>
     // 💥 WARNING: This might make your computer slow! Try a smaller `length` first
     Array.from({ length: 100 }, () => createRandomPost())
